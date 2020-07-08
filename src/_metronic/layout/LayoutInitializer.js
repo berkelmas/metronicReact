@@ -20,11 +20,11 @@ export default function LayoutInitializer({
     dispatch(builder.actions.setMenuConfig(menuConfig));
   }, [dispatch, menuConfig]);
 
-  useEffect(() => {
-    if (layoutConfig.demo !== builderState.layoutConfig.demo) {
-      dispatch(builder.actions.setLayoutConfigs(layoutConfig));
-    }
-  }, [dispatch, builderState, layoutConfig]);
+  // useEffect(() => {
+  //   if (layoutConfig.demo !== builderState.layoutConfig.demo) {
+  //     dispatch(builder.actions.setLayoutConfigs(layoutConfig));
+  //   }
+  // }, [dispatch, builderState, layoutConfig]);
 
   // NEWLY ADDED CODE
   useEffect(() => {

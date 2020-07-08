@@ -111,7 +111,6 @@ export const actions = {
   setMenuConfig: (payload) => ({ payload, type: actionTypes.SetMenuConfig }),
 
   setLayoutConfigs: (payload) => {
-    console.log("payload", payload);
     return { payload, type: actionTypes.SetLayoutConfigs };
   },
 

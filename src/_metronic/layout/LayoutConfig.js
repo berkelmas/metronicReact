@@ -94,7 +94,7 @@ export const initLayoutConfig = {
         display: true,
       },
     },
-    color: "thyssenkrupp-blue",
+    color: "aside-thyssenkrupp-blue",
     menu: {
       "root-arrow": false,
       dropdown: "true", // ok

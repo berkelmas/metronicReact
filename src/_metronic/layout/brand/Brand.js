@@ -11,7 +11,6 @@ class Brand extends React.Component {
   }
 
   render() {
-    // console.log("brand classes", this.props.brandClasses);
     return (
       <div
         className={`kt-aside__brand kt-grid__item ${this.props.brandClasses}`}
@@ -19,7 +18,11 @@ class Brand extends React.Component {
       >
         <div className="kt-aside__brand-logo">
           <Link to="">
-            <img alt="logo" src={toAbsoluteUrl("/media/logos/logo-4.png")} />
+            <img
+              style={{ height: "50px" }}
+              alt="logo"
+              src={toAbsoluteUrl("/media/logos/thyssenkrupp-logo-white.png")}
+            />
           </Link>
         </div>
       </div>

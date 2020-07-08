@@ -49,6 +49,8 @@ export default class HtmlClassService {
     this.initContent();
     // init aside and aside menu
     this.initAside();
+    // init brand
+    this.initBrand();
 
     // init footer
     this.initFooter();
@@ -231,7 +233,7 @@ export default class HtmlClassService {
     }
 
     if (objectPath.get(this.config, "aside.color") === "thyssenkrupp-blue") {
-      console.log("THYSSENKRUPP");
+      objectPath.push(this.classes, "aside_menu", "thyssenkrupp-blue");
     }
 
     const asideSubmenuDHoverTimeout = objectPath.get(
@@ -242,6 +244,16 @@ export default class HtmlClassService {
       this.attributes.aside_menu[
         "data-ktmenu-dropdown-timeout"
       ] = asideSubmenuDHoverTimeout;
+    }
+  }
+
+  /**
+   * Init Brand
+   */
+  initBrand() {
+    const brandClass = objectPath.get(this.config, "aside.color");
+    if (brandClass !== null) {
+      objectPath.push(this.classes, "brand", brandClass);
     }
   }
 
