@@ -22,6 +22,7 @@ export default class HtmlClassService {
       aside: [],
       brand: [],
       aside_menu: [],
+      aside_menu_item: [],
       subheader: [],
       subheader_container: [],
       content: [],
@@ -236,6 +237,13 @@ export default class HtmlClassService {
       objectPath.push(this.classes, "aside_menu", "thyssenkrupp-blue");
     }
 
+    // CHANGES BACKGROUND OF ASIDE MENU
+    const asideBackgroundClass = objectPath.get(this.config, "aside.color");
+    if (asideBackgroundClass !== null) {
+      objectPath.push(this.classes, "aside", asideBackgroundClass);
+      objectPath.push(this.classes, "aside_menu", asideBackgroundClass);
+    }
+
     const asideSubmenuDHoverTimeout = objectPath.get(
       this.config,
       "aside.menu.submenu.dropdown.hover-timeout"
@@ -251,9 +259,10 @@ export default class HtmlClassService {
    * Init Brand
    */
   initBrand() {
-    const brandClass = objectPath.get(this.config, "aside.color");
-    if (brandClass !== null) {
-      objectPath.push(this.classes, "brand", brandClass);
+    // CHANGES BACKGROUND OF BRAND DIV
+    const brandBackgroundClass = objectPath.get(this.config, "aside.color");
+    if (brandBackgroundClass !== null) {
+      objectPath.push(this.classes, "brand", brandBackgroundClass);
     }
   }
 

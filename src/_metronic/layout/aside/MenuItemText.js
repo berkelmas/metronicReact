@@ -1,13 +1,18 @@
 import React from "react";
 import { FormattedMessage } from "react-intl";
 
-export default class MenuItemText extends React.Component {
+class MenuItemText extends React.Component {
   render() {
     const { item, parentItem } = this.props;
 
     return (
       <>
-        {item.icon && <i className={`kt-menu__link-icon ${item.icon}`} />}
+        {item.icon && (
+          <i
+            style={{ fontSize: "30px" }}
+            className={`kt-menu__link-icon p-3 ${item.icon}`}
+          />
+        )}
 
         {parentItem && parentItem.bullet === "dot" && (
           <i className="kt-menu__link-bullet kt-menu__link-bullet--dot">
@@ -21,13 +26,19 @@ export default class MenuItemText extends React.Component {
           </i>
         )}
 
-        <span className="kt-menu__link-text" style={{ whiteSpace: "nowrap" }}>
-          {!item.translate ? (
-            item.title
-          ) : (
-            <FormattedMessage id={item.translate} defaultMessage={item.title} />
-          )}
-        </span>
+        {/** ADDED TO INDICATE ONLY ICON ITEM FEATURE */}
+        {!item["icon-only"] && (
+          <span className="kt-menu__link-text" style={{ whiteSpace: "nowrap" }}>
+            {!item.translate ? (
+              item.title
+            ) : (
+              <FormattedMessage
+                id={item.translate}
+                defaultMessage={item.title}
+              />
+            )}
+          </span>
+        )}
 
         {item.badge && (
           <span className="kt-menu__link-badge">
@@ -42,3 +53,5 @@ export default class MenuItemText extends React.Component {
     );
   }
 }
+
+export default MenuItemText;

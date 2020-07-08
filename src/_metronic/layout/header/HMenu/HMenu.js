@@ -14,8 +14,8 @@ const offcanvasOptions = {
   closeBy: "kt_header_menu_mobile_close_btn",
   toggleBy: {
     target: "kt_header_mobile_toggler",
-    state: "kt-header-mobile__toolbar-toggler--active"
-  }
+    state: "kt-header-mobile__toolbar-toggler--active",
+  },
 };
 
 class HMenu extends React.Component {
@@ -52,15 +52,15 @@ class HMenu extends React.Component {
       submenu: {
         desktop: "dropdown",
         tablet: "accordion",
-        mobile: "accordion"
+        mobile: "accordion",
       },
       accordion: {
         slideSpeed: 200, // accordion toggle slide speed in milliseconds
-        expandAll: false // allow having multiple expanded accordions in the menu
+        expandAll: false, // allow having multiple expanded accordions in the menu
       },
       dropdown: {
-        timeout: 50
-      }
+        timeout: 50,
+      },
     };
 
     let menuDesktopMode = "accordion";
@@ -72,7 +72,7 @@ class HMenu extends React.Component {
 
     if (typeof objectPath.get(menuOptions, "submenu.desktop") === "object") {
       menuOptions.submenu.desktop = {
-        default: menuDesktopMode
+        default: menuDesktopMode,
       };
     }
 
@@ -85,9 +85,10 @@ class HMenu extends React.Component {
       disabledAsideSelfDisplay,
       ktMenuClasses,
       ulClasses,
-      rootArrowEnabled
+      rootArrowEnabled,
     } = this.props;
     const items = this.props.menuConfig.header.items;
+    console.log(items);
     return (
       <>
         <button
@@ -136,12 +137,12 @@ class HMenu extends React.Component {
   }
 }
 
-const mapStateToProps = store => ({
+const mapStateToProps = (store) => ({
   config: store.builder.layoutConfig,
   menuConfig: store.builder.menuConfig,
   ktMenuClasses: builder.selectors.getClasses(store, {
     path: "header_menu",
-    toString: true
+    toString: true,
   }),
   rootArrowEnabled: builder.selectors.getConfig(
     store,
@@ -150,10 +151,10 @@ const mapStateToProps = store => ({
   headerSelfSkin: builder.selectors.getConfig(store, "header.self.skin"),
   ulClasses: builder.selectors.getClasses(store, {
     path: "header_menu_nav",
-    toString: true
+    toString: true,
   }),
   disabledAsideSelfDisplay:
-    objectPath.get(store.builder.layoutConfig, "aside.self.display") === false
+    objectPath.get(store.builder.layoutConfig, "aside.self.display") === false,
 });
 
 export default withRouter(connect(mapStateToProps)(HMenu));

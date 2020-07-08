@@ -7,7 +7,7 @@ import clsx from "clsx";
 
 export default class MenuItem extends React.Component {
   asideLeftLIRef = React.createRef();
-  isDropdown =  document.body.classList.contains("kt-aside-menu--dropdown");
+  isDropdown = document.body.classList.contains("kt-aside-menu--dropdown");
 
   submenuToggle =
     this.props.item.toggle === "click"
@@ -20,7 +20,7 @@ export default class MenuItem extends React.Component {
    * Use for fixed left aside menu, to show menu on mouseenter event.
    * @param event Event
    */
-  mouseEnter = event => {
+  mouseEnter = (event) => {
     if (!this.isDropdown) {
       return;
     }
@@ -38,7 +38,7 @@ export default class MenuItem extends React.Component {
    * Mouse Leave event
    * @param event: MouseEvent
    */
-  mouseLeave = event => {
+  mouseLeave = (event) => {
     if (!this.isDropdown) {
       return;
     }
@@ -49,7 +49,7 @@ export default class MenuItem extends React.Component {
     }
   };
 
-  isMenuItemIsActive = item => {
+  isMenuItemIsActive = (item) => {
     if (item.submenu) {
       return this.isMenuRootItemIsActive(item);
     }
@@ -61,7 +61,7 @@ export default class MenuItem extends React.Component {
     return this.props.currentUrl.indexOf(item.page) !== -1;
   };
 
-  isMenuRootItemIsActive = item => {
+  isMenuRootItemIsActive = (item) => {
     for (const subItem of item.submenu) {
       if (this.isMenuItemIsActive(subItem)) {
         return true;
@@ -74,7 +74,6 @@ export default class MenuItem extends React.Component {
   render() {
     const { item, currentUrl, parentItem, layoutConfig } = this.props;
     const isActive = this.isMenuItemIsActive(item);
-
     return (
       <li
         ref={this.asideLeftLIRef}
@@ -90,7 +89,7 @@ export default class MenuItem extends React.Component {
             "kt-menu__item--open kt-menu__item--here": isActive && item.submenu,
             "kt-menu__item--active kt-menu__item--here":
               isActive && !item.submenu,
-            "kt-menu__item--icon-only": item["icon-only"]
+            "kt-menu__item--icon-only": item["icon-only"],
           },
           item["custom-class"]
         )}

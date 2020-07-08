@@ -5,7 +5,7 @@
  * components (e.g: `src/pages/auth/AuthPage`, `src/pages/home/HomePage`).
  */
 
-import React, { useEffect } from "react";
+import React from "react";
 import { Redirect, Route, Switch, withRouter } from "react-router-dom";
 import { shallowEqual, useSelector } from "react-redux";
 import { useLastLocation } from "react-router-last-location";
@@ -16,7 +16,6 @@ import LogoutPage from "../pages/auth/Logout";
 import { LayoutContextProvider } from "../../_metronic";
 import Layout from "../../_metronic/layout/Layout";
 import * as routerHelpers from "../router/RouterHelpers";
-import initLayoutConfig from "../../_metronic/layout/LayoutConfig";
 
 export const Routes = withRouter(({ history }) => {
   const lastLocation = useLastLocation();
@@ -49,7 +48,7 @@ export const Routes = withRouter(({ history }) => {
           /* Redirect to `/auth` when user is not authorized */
           <Redirect to="/auth/login" />
         ) : (
-          <Layout selfLayout={initLayoutConfig}>
+          <Layout>
             <HomePage userLastLocation={userLastLocation} />
           </Layout>
         )}
