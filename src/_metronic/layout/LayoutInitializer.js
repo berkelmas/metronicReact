@@ -26,6 +26,11 @@ export default function LayoutInitializer({
     }
   }, [dispatch, builderState, layoutConfig]);
 
+  // NEWLY ADDED CODE
+  useEffect(() => {
+    dispatch(builder.actions.setLayoutConfigs(layoutConfig));
+  }, [dispatch, layoutConfig]);
+
   useEffect(() => {
     dispatch(builder.actions.setHtmlClassService(htmlClassService));
   }, [dispatch, htmlClassService]);
